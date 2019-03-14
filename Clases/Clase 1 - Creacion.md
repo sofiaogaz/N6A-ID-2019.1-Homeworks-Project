@@ -78,3 +78,7 @@ Nos movemos a la carpeta dataaccess (cd Homeworks.DataAccess)
 dotnet add package Microsoft.EntityFrameworkCore
 dotnet add package Microsoft.EntityFrameworkCore.InMemory
 ```
+
+# Mas Info
+
+* [Comandos](https://docs.microsoft.com/es-es/dotnet/core/tools/dotnet?tabs=netcore21)
