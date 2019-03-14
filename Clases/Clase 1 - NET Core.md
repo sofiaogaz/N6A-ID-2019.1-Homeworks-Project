@@ -1,79 +1,76 @@
-# Clase 2
+# Clase 1 - .NET Core
 
-## Instalacion de ambiente
+## Repaso .NET Framework
 
-* [.NET Core 2.1 downloads](https://www.microsoft.com/net/download/dotnet-core/2.1)
-* [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Postman](https://www.getpostman.com/apps)
+Es una plataforma de desarrollo de software. Que permite creara aplicaciones que se ejecutan en Windows.
 
-## Commandos
-Commando | Resultado
------------- | -------------
-dotnet new sln| Creamos solucion (solo útil para VisualStudio, cuando queremos abrir la solución y levantar los proyectos asociados)
-dotnet new webapi -n "Nombre del Proyecto"| Crear un nuevo Proyecto del template WebApi
-dotnet sln add | Asociamos el proyecto creado al .sln
-dotnet new classlib -n "Nombre del Proyecto"| Crear un nueva libreria (standard)
-dotnet add "Nombre del Proyecto 1".csproj reference "Nombre del Proyecto 2".csproj| Agrega una referencia al Proyecto 1 del Proyecto 2
-dotnet add package "Nombre del Package" | Instala la Package al proyecto actual
+![image](http://www.developerin.net/include/ArticleImages/Components.jpg)
 
+**.NET Framework** provee herramientas y tecnologías para desarrollar en Windows tanto aplicaciones webs o enterprise.
+Los principales componentes son:
 
-## Commandos para creacion de proyeto HomeworkWebApi
+1. CLR (Common Language Runtime): Este es el entorno de ejecución en el que corren todos los programas de .NET Framework. El código que corre bajo el CLR es llamado Managed Code (Ya que los programadores no tienen que procurarse por el manejo de memoria o de threads).
+El compilador del lenguaje compilara el código del programa en un .dll o .exe que este contiene Metadata y CIL (Common Intermediate Language).
+Luego el CLR a la hora de correr el programa vuelve a complicar el código una vez mas para generar código nativo esta conversion es realizada al momento de ejecutar las intrusiones y es llamada JIT (Just In Time)
+2. BCL (Base Class Library): Esta librería básica contiene tipos que representan los tipos de datos incorporados en el CLI, EJ: Data Types, Basic Dile Access, Collections, etc.
+3. FCL (Framework Class Library): Esta librería contiene ASP.NET, WinForms, XML, ADO.NET y mas.
+4. CLS (Common language specification): Esta contiene un juego de reglas que todos los lenguajes deben satisfacer para poder ser compilado y ejecutados por el CLR.
 
-### Creamos el sln para poder abrirlo en vs2017 (opcional)
-```
-dotnet new sln
-```
+## .NET Core
 
-### Creamos el proyecto webapi y lo agregamos al sln
-```
-dotnet new webapi -au none -n Homeworks.WebApi
-dotnet sln add Homeworks.WebApi\Homeworks.WebApi.csproj
-```
+.NET Core otra implementación de .NET de microsoft las principales diferencias entre estas son:
 
-### Creamos la libreria businesslogic y la agregamos al sln
-```
-dotnet new classlib -n Homeworks.BusinessLogic
-dotnet sln add Homeworks.BusinessLogic\Homeworks.BusinessLogic.csproj
-```
+1. Modelos de aplicación: .NET Core no es compatible con todos los modelos de aplicación de .NET Framework. En concreto, no es compatible con los formularios Web Forms ASP.NET ni ASP.NET MVC, pero sí con ASP.NET Core MVC. (Aunque: Se anunció que .NET Core 3 será compatible con WPF y Windows Forms.)
+2. API: .NET Core contiene un amplio subconjunto de bibliotecas de clases base de .NET Framework con una factorización distinta (los nombres de ensamblado son distintos y los miembros expuestos en los tipos difieren en los casos clave). Estas diferencias requieren cambios en el origen del puerto de .NET Core en algunos casos (vea microsoft/dotnet-apiport). .NET Core implementa la especificación de la API .NET Standard.
+3. Subsistemas: .NET Core implementa un subconjunto de los subsistemas de .NET Framework, de cara a una implementación y un modelo de programación más sencillos. Por ejemplo, no se admite seguridad de acceso del código (CAS), aunque se admite la reflexión.
+4. Plataformas: .NET Framework admite Windows y Windows Server, mientras que .NET Core también es compatible con macOS y Linux.
+5. Código abierto: .NET Core es código abierto, mientras que un subconjunto de .NET Framework de solo lectura es código abierto.
 
-### Creamos la libreria dataaccess y la agregamos al sln
-```
-dotnet new classlib -n Homeworks.DataAccess
-dotnet sln add Homeworks.DataAccess\Homeworks.DataAccess.csproj
-```
+### Arquitectura
 
-### Creamos la libreria domain y la agregamos al sln
-```
-dotnet new classlib -n Homeworks.Domain
-dotnet sln add Homeworks.Domain\Homeworks.Domain.csproj
-```
+![iamge](https://www.dotnetcurry.com/images/dotnetcore/core-future/dotnet-core-architecture.png)
 
-### Agregamos referencias de los proyectos a la webapi
-```
-dotnet add Homeworks.WebApi\Homeworks.WebApi.csproj reference Homeworks.DataAccess\Homeworks.DataAccess.csproj
-dotnet add Homeworks.WebApi\Homeworks.WebApi.csproj reference Homeworks.Domain\Homeworks.Domain.csproj
-dotnet add Homeworks.WebApi\Homeworks.WebApi.csproj reference Homeworks.BusinessLogic\Homeworks.BusinessLogic.csproj
-```
+Componentes:
 
-### Agregamos la referencia del domain al dataaccess
-```
-dotnet add Homeworks.DataAccess\Homeworks.DataAccess.csproj reference Homeworks.Domain\Homeworks.Domain.csproj
-```
+1. CoreCLR es un runtime que esta optimizado para multiplataforma y para desarrollos orientados a la nube. Es usado cuando se construyen aplicaciones en ASP.NET Core. Este CLR utiliza JIT
+2. .NET Runtime: es el CLR para las Universal Apps de Windows y esta optimizado para correr negativamente esto quiere decir que no produce una compilación en JIT si no que sigue compilación AOT (Ahead of time) esto quiere decir que se compila directamente a código de maquina, asegurando una mejor performance.
+3. Unified BCL (Base Class Library) consta de las clases básicas y fundamentales que forman parte de .NET Core. Esto también se llama como CoreFX. .NET Core sigue el modelo de NuGet para la entrega de paquetes para BCL.
 
-### Agregamos las referencias de domain y dataaccess a businesslogic
-```
-dotnet add Homeworks.BusinessLogic\Homeworks.BusinessLogic.csproj reference Homeworks.Domain\Homeworks.Domain.csproj
-dotnet add Homeworks.BusinessLogic\Homeworks.BusinessLogic.csproj reference Homeworks.DataAccess\Homeworks.DataAccess.csproj
-```
+## Xamarin
 
-### Descargamos Entity Framework Core
-Nos movemos a la carpeta web api (cd Homeworks.WebApi)
-```
-dotnet add package Microsoft.EntityFrameworkCore
-dotnet add package Microsoft.EntityFrameworkCore.InMemory
-```
-Nos movemos a la carpeta dataaccess (cd Homeworks.DataAccess)
-```
-dotnet add package Microsoft.EntityFrameworkCore
-dotnet add package Microsoft.EntityFrameworkCore.InMemory
-```
+No entraremos en detalles sobre este Framework, solo diremos esta basado tambien en .NET y permite generar aplicaciones nativas para iOS, OS X y Android con la misma base de codigo (actualmente C#).
+
+## .NET Standard
+
+Al tener 3 frameworks distintos orientados a propositos distintos nos surge un problema, imaginen que necesito desarrollar 3 aplicaciones que tienen la misma logica de negocio.
+
+* Windows Form (.NET Framework)
+* UWP (.NET Core)
+* Una aplicación en Android (Xamarin)
+
+Estas 3 van a tener la misma logica de negocio y van a estar desarrolladas en el mismo lenguaje (C#) pero como las librerías de estas no son compatibles entre si necesito que cada una de estas tenga un duplicado de la logica de negocio.
+Por este problema surge .NET Standard que es un conjunto de APIs que todas las plataformas de .NET tienen que implementar. Esto unifica las plataformas de .NET
+
+Ya que ahora si hago mi logica de negocios en .NET Standard, solo necesito generar capas de presentacion en cada uno de los frameworks establecidos y todos usaran la misma logica de negocios sin duplicarla.
+*Nota importante: una proyecto en .NET Standard solo puede compilar a .dll, jamas un proyecto en Standard va a dar como resultado un ejecutable a la hora de ser compilado, tampoco es posible compilar una proyecto en Standard por si solo si no que este debe de compilarse a 1 de los otros frameworks*
+
+![image](https://cdn-images-1.medium.com/max/2400/1*-bQofDO6WBkiru3Tu5VpMg.png)
+
+## Cuando usar .NET Core
+ 
+* Si vas a desarrollar una aplicacion multiplataforma.
+* Si estas apuntando a microservicios
+* Si necesitas alta eficiencia y escalabilidad.
+
+## Cuando usar .NET Framework
+
+* Si estas desarrollando una aplicacion que usa .NET Framework
+* Necestas librerias que no se enecuentran en .NET Core.
+* La plataforma en la que vas a desarrollar no soporta .NET Core
+
+# Mas Info
+
+* [Xamarin](https://visualstudio.microsoft.com/es/xamarin)
+* [Modern Web App wit ASP.NET Core](https://docs.microsoft.com/en-us/dotnet/standard/modern-web-apps-azure-architecture/)
+* [.NET Core VS .NET Framework](https://docs.microsoft.com/en-us/dotnet/standard/choosing-core-framework-server)
+* [Dotnet](https://docs.microsoft.com/es-es/dotnet/core/about)
