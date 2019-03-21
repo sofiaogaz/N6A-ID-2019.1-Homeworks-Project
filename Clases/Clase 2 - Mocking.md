@@ -20,9 +20,9 @@ Tipo | Descripción
 
 ## ¿Por qué los queremos usar?
 
-Porque queremos probar objetos y la forma en que estos interactúan con otros objetos. Para ello crearemos instancias de Mocks, es decir, objetos que simulen el comportamiento externo (es decir, la interfaz), de un cierto objeto. Son objetos tontos, que no dependen de nadie, siendo útiles para aislar una cierta parte de la aplicación que queramos probar. 
+Porque queremos probar objetos y la forma en que estos interactúan con otros objetos. Para ello crearemos instancias de Mocks, es decir, objetos que simulen el comportamiento externo (es decir, la interfaz), de un cierto objeto. Son objetos tontos, que no dependen de nadie, siendo útiles para aislar una cierta parte de la aplicación que queramos probar.
 
-Hay ciertos casos en los que incluso los mocks son realmente la forma más adecuada de llevar a cabo pruebas unitarias. 
+Hay ciertos casos en los que incluso los mocks son realmente la forma más adecuada de llevar a cabo pruebas unitarias.
 Para esto deberemos modificar nuestro proyecto en lugar de atar los objetos dependientes en nuestros constructores los, "inyectaremos". Para esto todo objeto que quereamos mockear debe tener una interfaz definida. Ej: si queremos probar de manera independiente UserLogic, vamos a tener que sacar el constructor sin parámetros y agregar uno que reciba UserRepository pero como no tiene una interfaz bien definida la crearemos también y nuestro constructor de UserLogic recibirá esta interfaz como parámetro.
 
 ![alt text](http://tutorials.jenkov.com/images/java-unit-testing/testing-with-di-containers.png)
