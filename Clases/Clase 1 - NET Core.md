@@ -48,24 +48,24 @@ Al tener 3 frameworks distintos orientados a propositos distintos nos surge un p
 * UWP (.NET Core)
 * Una aplicación en Android (Xamarin)
 
-Estas 3 van a tener la misma logica de negocio y van a estar desarrolladas en el mismo lenguaje (C#) pero como las librerías de estas no son compatibles entre si necesito que cada una de estas tenga un duplicado de la logica de negocio.
+Estas 3 van a tener la misma lógica de negocio y van a estar desarrolladas en el mismo lenguaje (C#) pero como las librerías de estas no son compatibles entre si necesito que cada una de estas tenga un duplicado de la logica de negocio.
 Por este problema surge .NET Standard que es un conjunto de APIs que todas las plataformas de .NET tienen que implementar. Esto unifica las plataformas de .NET
 
-Ya que ahora si hago mi logica de negocios en .NET Standard, solo necesito generar capas de presentacion en cada uno de los frameworks establecidos y todos usaran la misma logica de negocios sin duplicarla.
+Ya que ahora si hago mi lógica de negocios en .NET Standard, solo necesito generar capas de presentación en cada uno de los frameworks establecidos y todos usaran la misma logica de negocios sin duplicarla.
 *Nota importante: una proyecto en .NET Standard solo puede compilar a .dll, jamas un proyecto en Standard va a dar como resultado un ejecutable a la hora de ser compilado, tampoco es posible compilar una proyecto en Standard por si solo si no que este debe de compilarse a 1 de los otros frameworks*
 
 ![image](https://cdn-images-1.medium.com/max/2400/1*-bQofDO6WBkiru3Tu5VpMg.png)
 
 ## Cuando usar .NET Core
- 
+
 * Si vas a desarrollar una aplicacion multiplataforma.
 * Si estas apuntando a microservicios
 * Si necesitas alta eficiencia y escalabilidad.
 
 ## Cuando usar .NET Framework
 
-* Si estas desarrollando una aplicacion que usa .NET Framework
-* Necestas librerias que no se enecuentran en .NET Core.
+* Si estas desarrollando una aplicación que usa .NET Framework
+* Necesitas librerías que no se encuentran en .NET Core.
 * La plataforma en la que vas a desarrollar no soporta .NET Core
 
 # Mas Info
