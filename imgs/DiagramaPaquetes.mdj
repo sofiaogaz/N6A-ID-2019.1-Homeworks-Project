@@ -549,17 +549,18 @@
 									"model": {
 										"$ref": "AAAAAAFpnsbsYWygU+M="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 473,
-									"top": 344,
+									"left": 495,
+									"top": 343,
+									"width": 35.0517578125,
 									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 15,
+									"alpha": -1.5308172389793746,
+									"distance": 25.019992006393608,
 									"hostEdge": {
 										"$ref": "AAAAAAFpnsbsYmyiDzU="
 									},
-									"edgePosition": 1
+									"edgePosition": 1,
+									"text": "+uses"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -642,17 +643,18 @@
 									"model": {
 										"$ref": "AAAAAAFpnseqpmzTc3Y="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 216,
-									"top": 388,
+									"left": 288,
+									"top": 399,
+									"width": 35.0517578125,
 									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 15,
+									"alpha": -1.7183642313966847,
+									"distance": 74.81310045707235,
 									"hostEdge": {
 										"$ref": "AAAAAAFpnseqp2zV+Ms="
 									},
-									"edgePosition": 1
+									"edgePosition": 1,
+									"text": "+uses"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -735,17 +737,18 @@
 									"model": {
 										"$ref": "AAAAAAFpnse0vWzkzxI="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 245,
-									"top": 217,
+									"left": 288,
+									"top": 208,
+									"width": 35.0517578125,
 									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 15,
+									"alpha": 1.7051175945638646,
+									"distance": 74.67261881037788,
 									"hostEdge": {
 										"$ref": "AAAAAAFpnse0vWzmCIE="
 									},
-									"edgePosition": 1
+									"edgePosition": 1,
+									"text": "+uses"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -828,17 +831,18 @@
 									"model": {
 										"$ref": "AAAAAAFpnshEFGz99dk="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 473,
-									"top": 164,
+									"left": 440,
+									"top": 168,
+									"width": 35.0517578125,
 									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 15,
+									"alpha": -4.615914817131401,
+									"distance": 31.144823004794873,
 									"hostEdge": {
 										"$ref": "AAAAAAFpnshEFGz/NPg="
 									},
-									"edgePosition": 1
+									"edgePosition": 1,
+									"text": "+uses"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -921,17 +925,18 @@
 									"model": {
 										"$ref": "AAAAAAFpnsjwMm0Vhlc="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 503,
+									"left": 504,
 									"top": 256,
+									"width": 35.0517578125,
 									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 15,
+									"alpha": 1.6020357504690703,
+									"distance": 32.01562118716424,
 									"hostEdge": {
 										"$ref": "AAAAAAFpnsjwMm0X32Y="
 									},
-									"edgePosition": 1
+									"edgePosition": 1,
+									"text": "+uses"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -1019,6 +1024,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpnsX++Ww1FPU="
 							},
+							"name": "uses",
 							"source": {
 								"$ref": "AAAAAAFpnsX++Ww1FPU="
 							},
@@ -1032,6 +1038,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpnsX++Ww1FPU="
 							},
+							"name": "uses",
 							"source": {
 								"$ref": "AAAAAAFpnsX++Ww1FPU="
 							},
@@ -1063,6 +1070,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpnsZ5omxqyrg="
 							},
+							"name": "uses",
 							"source": {
 								"$ref": "AAAAAAFpnsZ5omxqyrg="
 							},
@@ -1076,6 +1084,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpnsZ5omxqyrg="
 							},
+							"name": "uses",
 							"source": {
 								"$ref": "AAAAAAFpnsZ5omxqyrg="
 							},
@@ -1089,6 +1098,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpnsZ5omxqyrg="
 							},
+							"name": "uses",
 							"source": {
 								"$ref": "AAAAAAFpnsZ5omxqyrg="
 							},

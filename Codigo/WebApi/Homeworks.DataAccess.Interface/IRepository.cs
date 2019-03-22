@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace Homework.DataAccess.Interface
+namespace Homeworks.DataAccess.Interface
 {
     public interface IRepository<T>
     {

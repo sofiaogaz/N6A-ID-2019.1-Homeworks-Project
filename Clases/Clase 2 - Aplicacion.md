@@ -6,6 +6,6 @@ Descripción del dominio de nuestra aplicación.
 
 ![IMAGE](/imgs/DiagramaClases.png)
 
-## Diagrama de Paquetes
+## Diagrama de Paquetes (Vista de Usos)
 
 ![IMAGE](/imgs/DiagramaPaquetes.png)

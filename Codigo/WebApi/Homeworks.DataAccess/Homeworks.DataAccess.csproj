@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Homework.Domain\Homework.Domain.csproj" />
-    <ProjectReference Include="..\Homework.DataAccess.Interface\Homework.DataAccess.Interface.csproj" />
+    <ProjectReference Include="..\Homeworks.Domain\Homeworks.Domain.csproj" />
+    <ProjectReference Include="..\Homeworks.DataAccess.Interface\Homeworks.DataAccess.Interface.csproj" />
   </ItemGroup>
 
   <ItemGroup>

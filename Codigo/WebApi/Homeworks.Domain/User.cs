@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Homework.Domain
+namespace Homeworks.Domain
 {
     public class User
     {
