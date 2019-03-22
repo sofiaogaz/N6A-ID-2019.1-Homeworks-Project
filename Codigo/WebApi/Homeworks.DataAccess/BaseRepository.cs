@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 
-namespace Homework.DataAccess
+namespace Homeworks.DataAccess
 {
     public abstract class BaseRepository<T> : IRepository<T> where T : class
     {

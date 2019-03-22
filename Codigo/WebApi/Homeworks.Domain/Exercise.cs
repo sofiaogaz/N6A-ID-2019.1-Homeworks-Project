@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Homework.Domain
+namespace Homeworks.Domain
 {
     public class Exercise
     {
