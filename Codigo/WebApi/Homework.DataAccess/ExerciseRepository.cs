@@ -4,7 +4,7 @@ using System.Linq;
 using Homeworks.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Homeworks.DataAccess
+namespace Homework.DataAccess
 {
     public class ExerciseRepository : BaseRepository<Exercise>
     {

@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace Homeworks.DataAccess.Interface
+namespace Homework.DataAccess.Interface
 {
-    public interface IRepository<T> : IDisposable where T : class
+    public interface IRepository<T>
     {
         void Add(T entity);
 

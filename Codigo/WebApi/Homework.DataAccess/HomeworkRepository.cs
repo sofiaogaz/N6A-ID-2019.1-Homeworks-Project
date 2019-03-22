@@ -4,7 +4,7 @@ using System.Linq;
 using Homeworks.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Homeworks.DataAccess
+namespace Homework.DataAccess
 {
     public class HomeworkRepository : BaseRepository<Homework>
     {
@@ -15,12 +15,14 @@ namespace Homeworks.DataAccess
 
         public override Homework Get(Guid id)
         {
-            return Context.Set<Homework>().Include("Exercises").First(x => x.Id == id);
+            return Context.Set<Homework>().Include("Exercises")
+                .First(x => x.Id == id);
         }
 
         public override IEnumerable<Homework> GetAll()
         {
-            return Context.Set<Homework>().Include("Exercises").ToList();
+            return Context.Set<Homework>().Include("Exercises")
+                .ToList();
         }
     }
 }

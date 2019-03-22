@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using Homeworks.DataAccess.Interface;
 using Microsoft.EntityFrameworkCore;
 
-namespace Homeworks.DataAccess
+namespace Homework.DataAccess
 {
     public abstract class BaseRepository<T> : IRepository<T> where T : class
     {
@@ -31,26 +29,6 @@ namespace Homeworks.DataAccess
         public void Save() 
         {
             Context.SaveChanges();
-        }
-
-        private bool disposedValue = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    Context.Dispose();
-                }
-                disposedValue = true;
-            }
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }

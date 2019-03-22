@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace Homeworks.Domain
+namespace Homework.Domain
 {
-    public class Homework : IEntity<Homework>
+    public class Homework
     {       
         public Guid Id {get; set;}
         public DateTime DueDate {get; set;}

@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace Homeworks.Domain
+namespace Homework.Domain
 {
-    public class Exercise : IEntity<Exercise>
+    public class Exercise
     {
         public Guid Id {get; set;}
         public string Problem {get; set;}
         public int Score {get; set;}
+
+        public Exercise() { }
 
         public bool IsValid()
         {

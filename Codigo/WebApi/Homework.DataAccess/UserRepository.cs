@@ -4,7 +4,7 @@ using System.Linq;
 using Homeworks.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Homeworks.DataAccess
+namespace Homework.DataAccess
 {
     public class UserRepository : BaseRepository<User>
     {
@@ -15,7 +15,8 @@ namespace Homeworks.DataAccess
 
         public override User Get(Guid id)
         {
-            return Context.Set<User>().First(x => x.Id == id);
+            return Context.Set<User>()
+                .First(x => x.Id == id);
         }
 
         public override IEnumerable<User> GetAll()
