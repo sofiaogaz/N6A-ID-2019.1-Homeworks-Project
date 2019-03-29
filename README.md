@@ -8,6 +8,7 @@
 * [Clase 2 - EF Core](/Clases/Clase%202%20-%20EntityFrameworkCore.md)
 * [Clase 3 - Inyección de Dependencias](/Clases/Clase%203%20-%20Inyeccion%20de%20Dependencias.md)
 * [Clase 3 - Mocking](/Clases/Clase%203%20-%20Mocking.md)
+* [Clase 4 - WebApi](/Clases/)
 
 ## Excel GitHub
 
