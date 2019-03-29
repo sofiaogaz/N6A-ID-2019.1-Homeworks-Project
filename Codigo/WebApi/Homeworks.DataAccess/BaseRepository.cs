@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Homeworks.DataAccess.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace Homeworks.DataAccess
