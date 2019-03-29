@@ -1,4 +1,4 @@
-# Clase 2 -  Inyección de Dependencias (ID)
+# Clase 3 -  Inyección de Dependencias (ID)
 
 ## ¿Qué es una dependencia?
 
