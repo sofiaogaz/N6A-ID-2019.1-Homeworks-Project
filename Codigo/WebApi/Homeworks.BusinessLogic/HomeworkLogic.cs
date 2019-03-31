@@ -9,11 +9,9 @@ namespace Homeworks.BusinessLogic
     public class HomeworkLogic : ILogic<Homework>
     {
         private IRepository<Homework> repositoryHome;
-        private IRepository<Exercise> repositoryExer;
 
-        public HomeworkLogic(IRepository<Homework> homeworks, IRepository<Exercise> exercises) {
+        public HomeworkLogic(IRepository<Homework> homeworks) {
             repositoryHome = homeworks;
-            repositoryExer = exercises;
         }
 
         public Homework Create(Homework homework) {
