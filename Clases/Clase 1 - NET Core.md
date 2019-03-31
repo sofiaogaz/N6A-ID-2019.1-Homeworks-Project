@@ -68,7 +68,7 @@ Ya que ahora si hago mi lógica de negocios en .NET Standard, solo necesito gene
 * Necesitas librerías que no se encuentran en .NET Core.
 * La plataforma en la que vas a desarrollar no soporta .NET Core
 
-# Mas Info
+## Mas Info
 
 * [Xamarin](https://visualstudio.microsoft.com/es/xamarin)
 * [Modern Web App wit ASP.NET Core](https://docs.microsoft.com/en-us/dotnet/standard/modern-web-apps-azure-architecture/)

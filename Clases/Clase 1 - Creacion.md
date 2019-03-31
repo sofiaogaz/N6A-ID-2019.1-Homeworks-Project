@@ -1,6 +1,6 @@
 # Clase 1 - Comandos Básicos
 
-## Instalacion de ambiente
+## Instalación de ambiente
 
 * [.NET Core 2.1 downloads](https://www.microsoft.com/net/download/dotnet-core/2.1)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
@@ -115,6 +115,6 @@ dotnet add package Microsoft.EntityFrameworkCore.InMemory
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 ```
 
-# Mas Info
+## Mas Info
 
 * [Comandos](https://docs.microsoft.com/es-es/dotnet/core/tools/dotnet?tabs=netcore21)
