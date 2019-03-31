@@ -2511,7 +2511,7 @@
 											"top": 293,
 											"width": 399.17236328125,
 											"height": 13,
-											"text": "+HomeworkLogic(IRepository<Homework>, IRepository<Exercise>)()",
+											"text": "+HomeworkLogic(IRepository<Homework>)()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3258,101 +3258,6 @@
 						},
 						{
 							"_type": "UMLDependencyView",
-							"_id": "AAAAAAFpnrAr5zSLoD4=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"model": {
-								"$ref": "AAAAAAFpnrAr5jSJujY="
-							},
-							"subViews": [
-								{
-									"_type": "EdgeLabelView",
-									"_id": "AAAAAAFpnrAr5zSMNsM=",
-									"_parent": {
-										"$ref": "AAAAAAFpnrAr5zSLoD4="
-									},
-									"model": {
-										"$ref": "AAAAAAFpnrAr5jSJujY="
-									},
-									"font": "Arial;13;0",
-									"left": 655,
-									"top": 336,
-									"width": 200.50341796875,
-									"height": 13,
-									"alpha": 2.816211974468444,
-									"distance": 200.4120754844877,
-									"hostEdge": {
-										"$ref": "AAAAAAFpnrAr5zSLoD4="
-									},
-									"edgePosition": 1,
-									"text": "-exercises: IRepository<Exercise>"
-								},
-								{
-									"_type": "EdgeLabelView",
-									"_id": "AAAAAAFpnrAr5zSNRZ0=",
-									"_parent": {
-										"$ref": "AAAAAAFpnrAr5zSLoD4="
-									},
-									"model": {
-										"$ref": "AAAAAAFpnrAr5jSJujY="
-									},
-									"visible": null,
-									"font": "Arial;13;0",
-									"left": 578,
-									"top": 414,
-									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 30,
-									"hostEdge": {
-										"$ref": "AAAAAAFpnrAr5zSLoD4="
-									},
-									"edgePosition": 1
-								},
-								{
-									"_type": "EdgeLabelView",
-									"_id": "AAAAAAFpnrAr5zSOeI8=",
-									"_parent": {
-										"$ref": "AAAAAAFpnrAr5zSLoD4="
-									},
-									"model": {
-										"$ref": "AAAAAAFpnrAr5jSJujY="
-									},
-									"visible": false,
-									"font": "Arial;13;0",
-									"left": 553,
-									"top": 377,
-									"height": 13,
-									"alpha": -1.5707963267948966,
-									"distance": 15,
-									"hostEdge": {
-										"$ref": "AAAAAAFpnrAr5zSLoD4="
-									},
-									"edgePosition": 1
-								}
-							],
-							"font": "Arial;13;0",
-							"head": {
-								"$ref": "AAAAAAFpnpqt6xikDKg="
-							},
-							"tail": {
-								"$ref": "AAAAAAFpnq1OKC6ya1A="
-							},
-							"lineStyle": 1,
-							"points": "688:311;436.85400390625:481.28616810993975",
-							"showVisibility": true,
-							"nameLabel": {
-								"$ref": "AAAAAAFpnrAr5zSMNsM="
-							},
-							"stereotypeLabel": {
-								"$ref": "AAAAAAFpnrAr5zSNRZ0="
-							},
-							"propertyLabel": {
-								"$ref": "AAAAAAFpnrAr5zSOeI8="
-							}
-						},
-						{
-							"_type": "UMLDependencyView",
 							"_id": "AAAAAAFpnrNs9zmwSGs=",
 							"_parent": {
 								"$ref": "AAAAAAFF+qBtyKM79qY="
@@ -3372,11 +3277,11 @@
 									},
 									"font": "Arial;13;0",
 									"left": 656,
-									"top": 352,
+									"top": 336,
 									"width": 221.076171875,
 									"height": 13,
-									"alpha": 2.727559290734838,
-									"distance": 207.5090359478353,
+									"alpha": 2.802166361471027,
+									"distance": 211.02606474082768,
 									"hostEdge": {
 										"$ref": "AAAAAAFpnrNs9zmwSGs="
 									},
@@ -5778,21 +5683,6 @@
 						},
 						{
 							"_type": "UMLDependency",
-							"_id": "AAAAAAFpnrAr5jSJujY=",
-							"_parent": {
-								"$ref": "AAAAAAFpnq1OKC6wK+c="
-							},
-							"name": "exercises: IRepository<Exercise>",
-							"source": {
-								"$ref": "AAAAAAFpnq1OKC6wK+c="
-							},
-							"target": {
-								"$ref": "AAAAAAFpnpqt6hiixwk="
-							},
-							"visibility": "private"
-						},
-						{
-							"_type": "UMLDependency",
 							"_id": "AAAAAAFpnrNs9jmufyU=",
 							"_parent": {
 								"$ref": "AAAAAAFpnq1OKC6wK+c="
@@ -5879,7 +5769,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFpnq1OKC6wK+c="
 							},
-							"name": "HomeworkLogic(IRepository<Homework>, IRepository<Exercise>)"
+							"name": "HomeworkLogic(IRepository<Homework>)"
 						}
 					]
 				},
