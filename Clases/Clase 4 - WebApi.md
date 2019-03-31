@@ -26,19 +26,15 @@ Existen varios conceptos asociados a las Web APIs, como endpoints, REST, entre o
 * Tooling en varias plataformas para que el desarrollo sea comodo y fácil.
 * Orientado a APIs REST.
 
-## Diagrama de Paquetes (Vista de Usos)
-
-![IMAGE](/imgs/DiagramaPaquetesWebApi.png)
-
 ## Que es REST? Diseño de APIs
 
 REST es un estilo arquitectonico que define guias de como hacer y como restringir los servicios Web y las interacciones con ellos.
 
 Es importante aclarar que REST, en su condicion de estilo arquitectonico, no es un estandard estricto, si no que permite flexibilidad. Debido a estar libertad y flexibilidad en su estructura, es importante definir buenas practicas.
 
-REST sirve como guia para definir como nombrar los recursos web y como utilizarlos. Esta interaccion es fuertemente basada en herramientas del protocolo HTTP. Por ejemplo, REST da una recomendacion de en que casos utilizar cada uno de los verbos (`GET`, `POST`, etc). 
+REST sirve como guia para definir como nombrar los recursos web y como utilizarlos. Esta interaccion es fuertemente basada en herramientas del protocolo HTTP. Por ejemplo, REST da una recomendacion de en que casos utilizar cada uno de los verbos (`GET`, `POST`, etc).
 
-Algo importante de aclarar es que nada esta escrito con fuego. REST recomienda cosas, pero pueden haber casos especificos donde hay que romper estas convenciones. Lo importante es tener claro porque se rompe, que es lo que se esta buscando y mantener estos casos al minimo. 
+Algo importante de aclarar es que nada esta escrito con fuego. REST recomienda cosas, pero pueden haber casos especificos donde hay que romper estas convenciones. Lo importante es tener claro porque se rompe, que es lo que se esta buscando y mantener estos casos al minimo.
 
 A continuación, definiremos una guia de diseño para APIs basada fuertemente en REST, mostrando algunas de las recomendaciones y limitaciones que REST plantea.
 

@@ -5,9 +5,9 @@
 Paquete | Descripción
 ------------ | -------------
 Microsoft.EntityFrameworkCore| EF Core
-Microsoft.EntityFrameworkCore.Design| Contiene toda la lógica de design-time para EF Core. Contiene clases que nos serviran para indicarle a EF Tools por ejemplo como crear un contexto.
+Microsoft.EntityFrameworkCore.Design| Contiene toda la lógica de design-time para EF Core. Contiene clases que nos servirán para indicarle a EF Tools por ejemplo como crear un contexto.
 Microsoft.EntityFrameworkCore.SqlServer| Es el provider para la bd Microsoft SQL Server
-Microsoft.EntityFrameworkCore.Tool| Este paquete permite la ejecución de comandos de entityframework (dotnet ef). Este permite hacer más fácil realizar varias tareas de EF Core, como: migraciones, scaffolding, etc
+Microsoft.EntityFrameworkCore.Tools| Este paquete permite la ejecución de comandos de entity framework (dotnet ef). Este permite hacer más fácil realizar varias tareas de EF Core, como: migraciones, scaffolding, etc
 Microsoft.EntityFrameworkCore.InMemory| (Opcional) Es un provider para bd en Memoria, es sobretodo útil para testing.
 
 ## DB Context de Referencia
@@ -27,12 +27,10 @@ namespace Homeworks.DataAccess
 
 ## Microsoft SQL Server
 
-Primero que nada modificaremos nuestra clase ContextFactory para que soporte MSQLS. 
-Esta tiene la responsabilidad de crear instancias del db context.
+Primero que crearemos la clase ContextFactory. Esta tiene la responsabilidad de crear instancias del db context, tanto en memoria como en MSQLS.
 
 ```c#
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
 
 namespace Homeworks.DataAccess
 {
@@ -40,12 +38,8 @@ namespace Homeworks.DataAccess
         MEMORY, SQL
     }
 
-    public class ContextFactory : IDesignTimeDbContextFactory<HomeworksContext>
+    public class ContextFactory
     {
-        public HomeworksContext CreateDbContext(string[] args) {
-            return GetNewContext();
-        }
-
         public static HomeworksContext GetNewContext(ContextType type = ContextType.SQL) {
             var builder = new DbContextOptionsBuilder<HomeworksContext>();
             DbContextOptions options = null;
@@ -71,28 +65,32 @@ namespace Homeworks.DataAccess
 }
 ```
 
-Primer cambio importante que notaran es que ahora ContextFactory está implementando **IDesignTimeDbContextFactory** esta Interfaz le indica a EF Tools como crear los db context, para ello nos pide implementar el siguiente metodo **CreateDbContext**
+## Creación de la BD
 
-También agregamos el método GetSqlConfig que se encarga de crear la configuración para la conexión a MSQLS para esto simplemente hacemos builder.UseSqlServer y le pasamos el connection string.
+EF Core no cuenta con migraciones automáticas. Si usamos una base de datos relacional SQL (!InMemory) entonces debemos crear las migraciones. Hay varias formas de hacer esto, pararnos sobre el proyecto del Contexto y referencia al de arranque con los .json de configuración. O lo inverso.
 
-## Creacion de la BD
+Antes que nada tenemos que estar seguro de tenes instalado el paquete "Microsoft.EntityFrameworkCore.Tools" en nuestro DataAccess para esto nos dirigiremos a este y
 
-EF Core a diferencia del viejo EF, no nos creará automáticamente la bd si no se encuentra en MSQLS, entonces para resolver esto tenemos que crear la BD a través de una migración.
-Para esto debemos pararnos en el proyecto de Homeworks.WebApi en la consola y lanzar el siguiente comando:
-
-```
- dotnet ef migrations add CreateHomeworksDB -p ..\Homeworks.DataAccess\
+```PowerShell
+ cd Homeworks.DataAcess
+ dotnet add package Microsoft.EntityFrameworkCore.Tools
 ```
 
-*-p [proyecto] se coloca el proyecto donde se encuentra el db context en nuestro caso es el DataAccess*
+Desde la raíz del proyecto:
 
-Output: Si vamos al proyecto DataAccess nos debió haber generado una carpeta llamada Migrations con la migración
+```PowerShell
+ cd Homeworks.DataAcess
+ dotnet ef migrations add MyMigration --startup-project="..\Homeworks.WebApi\"
+```
+
+Output: Si vamos al proyecto DataAccess nos debió haber generado una carpeta llamada Migrations con la migración.
+
 ![Imagen CreateHomeworksDB](../imgs/migracionCreateDB.PNG)
 
 Después de crear la migración es necesario ejecutarla para eso utilizaremos el siguiente comando:
 
-```
-dotnet ef database update -p ..\Homeworks.DataAccess\
+```PowerShell
+ dotnet ef database update --startup-project="..\Homeworks.WebApi\"
 ```
 
 Output:
@@ -100,18 +98,18 @@ Output:
 
 ## Migraciones
 
-Las migraciones son la manera de mantener el schema de la BD sincronizado con el Dominio, por esto cada vez que se modifica el dominio se deberá crear una migracion.
+Las migraciones son la manera de mantener el schema de la BD sincronizado con el Dominio, por esto cada vez que se modifica el dominio se deberá crear una migración.
 
 Commando | Descripción
 ------------ | -------------
 dotnet ef migrations add NOMBRE_DE_LA_MIGRATION| Este comando creará la migración. Crea 3 archivos .cs 1) <timestamp>_<migration name>: Contiene las operaciones Up() y Down() que se aplicaran a la BD para remover o añadir objetos. 2) <timestamp>_<migration name>.Designer: Contiene la metadata que va a ser usada por EF Core. 3) <contextname>ModelSnapshot: Contiene un snapshot del modelo actual. Que será usada para determinar qué cambio cuando se realice la siguiente migración.
 dotnet ef database update| Este comando crea la BD en base al context, las clases del dominio y el snapshot de la migración.
-dotnet ef migrations remove| Este comando remueve la ultima migración y revierte el snapshot a la migración anterior. Esto solo puede ocurrir si la migración no fue aplicada todavia.
+dotnet ef migrations remove| Este comando remueve la ultima migración y revierte el snapshot a la migración anterior. Esto solo puede ocurrir si la migración no fue aplicada todavía.
 dotnet ef database update NOMBRE_DE_LA_MIGRATION| Este commando lleva la BD al migración del nombre NOMBRE_DE_LA_MIGRATION.
   
 ## Memoria
 
-Es conveniente para testing usar el provaider InMemory, este nos permite tener una base de datos en memoria. Permitiéndonos no impactar en la BD real.
+Es conveniente para testing usar el provider InMemory, este nos permite tener una base de datos en memoria. Permitiéndonos no impactar en la BD real.
 Para este en particular simplemente se requiere en el builder del context
 usar builder.UseInMemoryDatabase y simplemente pasarle como parámetro un string con el nombre de la bd. Ver FactoryContext más arriba.
 
