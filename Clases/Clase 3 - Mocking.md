@@ -41,28 +41,28 @@ Luego lo configuraremos para que detecte nuestros proyectos de prueba para esto 
 
 ## Empezando con Moq
 
-## WebApi
+## BusinessLogic
 
-Para comenzar a utilizar Moq, comenzaremos probando nuestro paquete de controllers de la web api. Para ello, debemos crear un nuevo proyecto de tipo Librería de Clases (Homeworks.WebApi.Tests) e instalarle Moq.
+Para comenzar a utilizar Moq, comenzaremos probando nuestro paquete de BusinessLogic. Para ello, debemos crear un nuevo proyecto de tipo Librería de Clases (Homeworks.BusinessLogic.Tests) e instalarle Moq.
 
-```
-dotnet new mstest -n Homeworks.WebApi.Tests
-cd Homeworks.WebApi.Tests
+```PowerShell
+dotnet new mstest -n Homeworks.BusinessLogic.Tests
+cd Homeworks.WebApi.BusinessLogic
 dotnet add package Moq
 ```
 
-Luego al proyecto de tests le agregaremos las referencias a WebApi, Domain y BusinessLogic.Interface
+Agregamos las referencias a BusinessLogic, Domain y finalmente a DataAccess.Interface
 
-Una vez que estos pasos estén prontos, podemos comenzar a realizar nuestro primer test. Creamos entonces la clase UsersControllerTests, y en ella escribimos el primer `TestMethod`.
+Una vez que estos pasos estén prontos, podemos comenzar a realizar nuestro primer test. Creamos entonces la clase UserLogicTests, y en ella escribimos el primer `TestMethod`.
 
-## Probando el Post
+## Probando el Create User
 
 ```C#
 [TestClass]
-public class UsersControllerTests
+public class UserLogicTests
 {
     [TestMethod]
-    public void CreateValidUserOkTest()
+    public void CreateValidUserTest()
     {
         //Arrange
 
@@ -76,6 +76,63 @@ public class UsersControllerTests
 
 Para ello seguiremos la metodología **AAA: Arrange, Act, Assert**.
 En la sección de **Arrange**, construiremos los el objeto mock y se lo pasaremos al sistema a probar. En la sección de **Act**, ejecutaremos el sistema a probar. Por último, en la sección de **Assert**, verificaremos la interacción del SUT con el objeto mock.
+
+Entonces:
+
+1) Primero vamos a decirle que esperamos que sobre nuestro Mock que se llame a la función Add().
+2) Luego vamos a indicarle que esperamos que se llame la función Save().
+3) Invocamos Create
+4) Verificamos que se hicieron las llamadas pertinentes, y realizamos Asserts
+
+```C#
+[TestMethod]
+public void CreateValidUserTest()
+{
+    var user = new User
+    {
+        UserName = "Hola",
+        Password = "Hola"
+    };
+    var mock = new Mock<IRepository<User>>(MockBehavior.Strict);
+    mock.Setup(m => m.Add(It.IsAny<User>()));
+    mock.Setup(m => m.Save());
+    var userLogic = new UserLogic(mock.Object);
+
+    var result = userLogic.Create(user);
+
+    mock.VerifyAll();
+    Assert.AreEqual(user.UserName, result.UserName);
+}
+```
+
+Probando el caso particular el cual se recibe un usuario nulo:
+
+```C#
+[TestMethod]
+[ExpectedException(typeof(ArgumentException))]
+public void CreateNullUserTest()
+{
+    var mock = new Mock<IRepository<User>>(MockBehavior.Strict);
+    var userLogic = new UserLogic(mock.Object);
+
+    var result = userLogic.Create(null);
+}
+```
+
+## WebApi
+
+Creamos nuestro proyecto:
+
+```PowerShell
+dotnet new mstest -n Homeworks.BusinessLogic.Tests
+cd Homeworks.WebApi.Tests
+dotnet add package Moq
+```
+
+Luego al proyecto de tests le agregaremos las referencias a WebApi, Domain y BusinessLogic.Interface
+Creamos entonces la clase UsersControllerTests.
+
+## Probando el Post
 
 ```C#
 [TestMethod]
@@ -182,62 +239,7 @@ Lo que hicimos fue indicar que cuando se invoque Create se lanze ```ArgumentExce
 
 Finalmente entonces, verificamos que las expectativas se hayan cumplido (con el ```VerifyAll()```), y luego que el resultado obtenido sea un ```BadRequestObjectResult```
 
-## BusinessLogic
-
-Creamos nuestro proyecto:
-```
-dotnet new mstest -n Homeworks.BusinessLogic.Tests
-cd Homeworks.WebApi.BusinessLogic
-dotnet add package Moq
-```
-Agregamos las referencias a BusinessLogic, Domain y finalmente a DataAccess.Interface
-Creamos entonces la clase UserLogicTests. 
-
-## Probando el Create User
-
-Entonces:
-
-1) Primero vamos a decirle que esperamos que sobre nuestro Mock que se llame a la función Add().
-2) Luego vamos a indicarle que esperamos que se llame la función Save().
-3) Invocamos Create
-4) Verificamos que se hicieron las llamadas pertinentes, y realizamos Asserts
-
-```C#
-[TestMethod]
-public void CreateValidUserTest()
-{
-    var user = new User
-    {
-        UserName = "Hola",
-        Password = "Hola"
-    };
-    var mock = new Mock<IRepository<User>>(MockBehavior.Strict);
-    mock.Setup(m => m.Add(It.IsAny<User>()));
-    mock.Setup(m => m.Save());
-    var userLogic = new UserLogic(mock.Object);
-
-    var result = userLogic.Create(user);
-
-    mock.VerifyAll();
-    Assert.AreEqual(user.UserName, result.UserName);
-}
-```
-
-Probando el caso particular el cual se recibe un usuario nulo:
-
-```C#
-[TestMethod]
-[ExpectedException(typeof(ArgumentException))]
-public void CreateNullUserTest()
-{
-    var mock = new Mock<IRepository<User>>(MockBehavior.Strict);
-    var userLogic = new UserLogic(mock.Object);
-
-    var result = userLogic.Create(null);
-}
-```
-
-# Mas Info
+## Mas Info
 
 * [MOQ](https://github.com/moq/moq4)
 * [Mocks Aren't Stubs](https://martinfowler.com/articles/mocksArentStubs.html)
