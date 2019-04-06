@@ -39,48 +39,65 @@ Esto no está bien ya que se debería de encargar un [Authorization filters](htt
 Esta clase se encargará de hacer ABMs de tokens (guids) que usaremos para identificar que usuario está realizando la request.
 
 ```c#
-public class SessionLogic : IDisposable
+public class SessionLogic : ISessionLogic
 {
-    // TENDRIA QUE SER UN SESSION REPOSITORY
+    private IRepository<User> repository;
+
+    // TENDRÍA QUE SER UN SESSION REPOSITORY
     // SESSION = {
     //      token: Guid,  
     //      user: User
     // }
-    private UserRepository repository;
+    // CUIDADO CON LAS VARIABLES ESTÁTICAS EN LA BUISSNESSLOGIC
+    private static IDictionary<string, Guid?> TokenRepository = null;
 
-    public SessionLogic() {
-        repository = new UserRepository(ContextFactory.GetNewContext());
+    public SessionLogic(IRepository<User> repository) {
+        this.repository = repository;
+        if (TokenRepository == null) {
+            TokenRepository = new Dictionary<string, Guid?>();
+        }
     }
 
     public bool IsValidToken(string token)
     {
         // SI EL TOKEN EXISTE EN BD RETORNA TRUE
-        return true;
+        return TokenRepository.ContainsKey(token);
     }
 
-    public Guid CreateToken(string userName, string password)
+    public Guid? CreateToken(string userName, string password)
     {
         // SI EL USUARIO EXISTE Y LA PASS Y EL USERNAME SON EL MISMO
-        // RETORANR GUID
-        return Guid.NewGuid();
+        // RETORNAR GUID
+        var users = repository.GetAll();
+        var user = users.FirstOrDefault(x => x.UserName == userName && x.Password == password);
+        if (user == null)
+        {
+            return null;
+        }
+        var token = Guid.NewGuid();
+        TokenRepository.Add(token.ToString(), user.Id);
+        return token;
     }
 
     public bool HasLevel(string token, string role)
     {  
-        // SI EL DUEÑO DEL TOKEN TIENE EL ROLE REQUERIDO
-        // RETORNA TRUE
-        return true;
+        var user = GetUser(token);
+        if (user == null) {
+            return false;
+        }
+        return user.IsAdmin;
     }
 
-    public User GetUser(string token) 
+    public User GetUser(string token)
     {
-        return repository.GetAll().ToList()[0];
+        Guid? userId = null;
+        if (TokenRepository.TryGetValue(token, out userId))
+        {
+            return repository.Get(userId.GetValueOrDefault());
+        }
+        return null;
     }
 
-    public void Dispose()
-    {
-        repository.Dispose();
-    }
 }
 ```
 
@@ -91,13 +108,13 @@ Este tiene un post que si el username y la password nos genere un token.
 
 ```c#
 [Route("api/[controller]")]
-public class TokenController : Controller
+public class TokenController : ControllerBase
 {
-    private SessionLogic sessions;
+    private ISessionLogic sessions;
 
-    public TokenController() 
+    public TokenController(ISessionLogic sessions) : base()
     {
-        sessions = new SessionLogic();
+        this.sessions = sessions;
     }
 
     [HttpPost]
@@ -110,14 +127,12 @@ public class TokenController : Controller
         return Ok(token);
     }
 
-    protected override void Dispose(bool disposing) 
-    {
-        try {
-            base.Dispose(disposing);
-        } finally {
-            sessions.Dispose();
-        }
+    [ProtectFilter("Admin")]
+    [HttpGet("Check")]
+    public IActionResult CheckLogin() {
+        return Ok(new UserModel(sessions.GetUser(Request.Headers["Authorization"])));
     }
+
 }
 ```
 
@@ -132,43 +147,52 @@ public class ProtectFilter : Attribute, IActionFilter
 {
     private readonly string _role;
 
-    public ProtectFilter(string role)
+    public ProtectFilter(string role) 
     {
         _role = role;
     }
 
     public void OnActionExecuting(ActionExecutingContext context)
     {
-        // OBTENEMOS EL TOKEN DEL HEADER
         string token = context.HttpContext.Request.Headers["Authorization"];
-        // SI EL TOKEN ES NULL CORTAMOS LA PIPELINE Y RETORNAMOS UN RESULTADO
-        if (token == null) {
+        if (token == null)
+        {
             context.Result = new ContentResult()
             {
+                StatusCode = 400,
                 Content = "Token is required",
             };
+            return;
         }
-        using (var sessions = new SessionLogic()) {
-            // VALIDAMOS EL TOKEN
-            if (!sessions.IsValidToken(token)) {
-                context.Result = new ContentResult()
-                {
-                    Content = "Invalid Token",
-                };
-            }
-            // CHECKEAMOS QUE EL TOKEN TENGA LOS PERMISOS NECESARIOS
-            if (!sessions.HasLevel(token, _role)) {
-                context.Result = new ContentResult()
-                {
-                    Content = "The user isen't " + _role,
-                };
-            }
+        var sessions = GetSessions(context);
+        if (!sessions.IsValidToken(token))
+        {
+            context.Result = new ContentResult()
+            {
+                StatusCode = 400,
+                Content = "Invalid Token",
+            };
+            return;
         }
+        if (!sessions.HasLevel(token, _role))
+        {
+            context.Result = new ContentResult()
+            {
+                StatusCode = 400,
+                Content = "The user isen't " + _role,
+            };
+            return;
+        }
+    }
+
+    private static ISessionLogic GetSessions(ActionExecutingContext context)
+    {
+        return (ISessionLogic)context.HttpContext.RequestServices.GetService(typeof(ISessionLogic));
     }
 
     public void OnActionExecuted(ActionExecutedContext context)
     {
-
+        // do something after the action executes
     }
 }
 ```

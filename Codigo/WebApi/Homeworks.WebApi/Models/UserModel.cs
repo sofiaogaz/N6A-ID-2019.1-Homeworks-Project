@@ -11,6 +11,7 @@ namespace Homeworks.WebApi.Models
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }
+        public bool IsAdmin { get; set; } = false;
 
         public UserModel() { }
 
@@ -25,6 +26,7 @@ namespace Homeworks.WebApi.Models
             Name = this.Name,
             UserName = this.UserName,
             Password = this.Password,
+            IsAdmin = this.IsAdmin
         };
 
         protected override UserModel SetModel(User entity)
@@ -32,6 +34,7 @@ namespace Homeworks.WebApi.Models
             Id = entity.Id;
             Name = entity.Name;
             UserName = entity.UserName;
+            IsAdmin = entity.IsAdmin;
             return this;
         }
 
