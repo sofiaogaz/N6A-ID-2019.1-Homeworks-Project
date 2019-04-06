@@ -206,6 +206,10 @@ Para el ejemplo en clase sera:
 dotnet new webapi --no-https -n Homeworks.WebApi
 ```
 
+# Diagrama de Paquetes
+
+![alt text](../imgs/DiagramaPaquetesWebApi.png)
+
 ## Como implementa esto `ASP .Net Core Web API`
 
 A continuacion vamos a ver como implementa todos estos conceptos ASP .NET Core Web API.
