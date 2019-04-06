@@ -9,9 +9,8 @@
 * [Clase 3 - Inyección de Dependencias](/Clases/Clase%203%20-%20Inyeccion%20de%20Dependencias.md)
 * [Clase 3 - Mocking](/Clases/Clase%203%20-%20Mocking.md)
 * [Clase 4 - WebApi](/Clases/Clase%204%20-%20WebApi.md)
-* [Clase 5 - Postman](/Clases/Clase%205%20-%20Postman.md)
-* [Clase 5 - Filters](/Clases/Clase%205%20-%20Filters.md) / [Colección de Ejemplo](/Codigo/Postman)
-
+* [Clase 5 - Postman](/Clases/Clase%205%20-%20Postman.md) / [Colección de Ejemplo](/Codigo/Postman)
+* [Clase 5 - Filters](/Clases/Clase%205%20-%20Filters.md)
 ## Excel GitHub
 
 * [Cuentas GitHub](https://1drv.ms/x/s!AsRv3us8uF1Rg5VSbE_Kpu_NsEw1Dg)
