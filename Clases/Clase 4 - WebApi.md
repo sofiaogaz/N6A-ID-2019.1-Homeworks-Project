@@ -194,6 +194,22 @@ que:
 
 En el segundo ejemplo, se brinda informacion descriptiva, se sabe donde ir a buscar mas informacion sobre el error, y se brinda un mensaje que se le puede mostrar a un usuario.
 
+# Creacion de una WebApi
+
+```PowerShell
+dotnet new webapi --no-https -n "NOMBRE DE NUESTRO PROYECTO"
+```
+
+Para el ejemplo en clase sera:
+
+```PowerShell
+dotnet new webapi --no-https -n Homeworks.WebApi
+```
+
+# Diagrama de Paquetes
+
+![alt text](../imgs/DiagramaPaquetesWebApi.png)
+
 ## Como implementa esto `ASP .Net Core Web API`
 
 A continuacion vamos a ver como implementa todos estos conceptos ASP .NET Core Web API.

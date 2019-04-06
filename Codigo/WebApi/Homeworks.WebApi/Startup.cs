@@ -31,18 +31,17 @@ namespace Homeworks.WebApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<DbContext, HomeworksContext>(
-                o => o.UseSqlServer(Configuration.GetConnectionString("HomeworksDB"))
-            );
             /*services.AddDbContext<DbContext, HomeworksContext>(
-                o => o.UseInMemoryDatabase("HomeworksDB")
+                o => o.UseSqlServer(Configuration.GetConnectionString("HomeworksDB"))
             );*/
+            services.AddDbContext<DbContext, HomeworksContext>(
+                o => o.UseInMemoryDatabase("HomeworksDB")
+            );
             services.AddScoped<ILogic<Homework>, HomeworkLogic>();
             services.AddScoped<IRepository<Homework>, HomeworkRepository>();
+            services.AddScoped<ISessionLogic, SessionLogic>();
             services.AddScoped<ILogic<User>, UserLogic>();
             services.AddScoped<IRepository<User>, UserRepository>();
-            services.AddScoped<ILogic<Exercise>, ExerciseLogic>();
-            services.AddScoped<IRepository<Exercise>, ExerciseRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -53,5 +52,6 @@ namespace Homeworks.WebApi
             }
             app.UseMvc();
         }
+        
     }
 }

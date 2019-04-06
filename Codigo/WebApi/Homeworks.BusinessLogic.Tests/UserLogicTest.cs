@@ -37,5 +37,26 @@ namespace Homeworks.BusinessLogic.Tests
 
             var result = userLogic.Create(null);
         }
+
+        [TestMethod]
+        public void GetValidUserTest()
+        {
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                UserName = "Hola",
+                Password = "Hola"
+            };
+            var mock = new Mock<IRepository<User>>(MockBehavior.Strict);
+            mock
+                .Setup(m => m.Get(user.Id))
+                .Returns(user);
+            var userLogic = new UserLogic(mock.Object);
+
+            var result = userLogic.Get(user.Id);
+
+            mock.VerifyAll();
+            Assert.AreEqual(user.UserName, result.UserName);
+        }
     }
 }

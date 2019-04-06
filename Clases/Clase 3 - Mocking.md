@@ -129,6 +129,13 @@ cd Homeworks.WebApi.Tests
 dotnet add package Moq
 ```
 
+Ademas vamos a necesitar **referencias a los paquetes de AspNet.Core**
+
+```PowerShell
+dotnet add package Microsoft.AspNetCore.Mvc.Abstractions
+dotnet add package Microsoft.AspNetCore.Mvc.Core
+```
+
 Luego al proyecto de tests le agregaremos las referencias a WebApi, Domain y BusinessLogic.Interface
 Creamos entonces la clase UsersControllerTests.
 
