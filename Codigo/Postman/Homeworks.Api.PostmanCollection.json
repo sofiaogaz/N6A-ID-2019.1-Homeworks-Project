@@ -53,17 +53,16 @@
 					"listen": "prerequest",
 					"script": {
 						"id": "5e725e18-657e-42cf-a503-d56bacdb73a9",
-						"type": "text/javascript",
 						"exec": [
 							"pm.environment.set(\"timeStamp\", new Date());"
-						]
+						],
+						"type": "text/javascript"
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
 						"id": "fb9e2910-c04e-4bc4-9600-1040e9278087",
-						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 201\", function () {",
 							"    pm.response.to.have.status(201);",
@@ -76,7 +75,8 @@
 							"});",
 							"",
 							""
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -462,7 +462,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"userName\":\"juanjuan\",\n\t\"password\":\"admin\"\n}"
+					"raw": "{\n\t\"userName\":\"admin\",\n\t\"password\":\"admin\"\n}"
 				},
 				"url": {
 					"raw": "{{url}}/api/Token",
@@ -500,6 +500,98 @@
 						"api",
 						"Token",
 						"Check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PROTECTED CONTROLLER",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/Protected",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"Protected"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PROTECTED CONTROLLER USER",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/Protected/CheckUser",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"Protected",
+						"CheckUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PROTECTED CONTROLLER ADMIN",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/Protected/CheckAdmin",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"Protected",
+						"CheckAdmin"
 					]
 				}
 			},
