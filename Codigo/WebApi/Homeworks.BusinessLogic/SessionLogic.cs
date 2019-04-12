@@ -53,7 +53,10 @@ namespace Homeworks.BusinessLogic
             if (user == null) {
                 return false;
             }
-            return user.IsAdmin;
+            if (role == "Admin") {
+                return user.IsAdmin;
+            }
+            return true;
         }
 
         public User GetUser(string token) 
