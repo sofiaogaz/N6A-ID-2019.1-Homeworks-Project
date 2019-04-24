@@ -34,26 +34,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Homeworks.DataAccess
 {
-    public enum ContextType {
-        MEMORY, SQL
-    }
-
     public class ContextFactory
     {
-        public static HomeworksContext GetNewContext(ContextType type = ContextType.SQL) {
+        public static HomeworksContext GetMemoryContext(string nameBd) { //BD EN MEMORIA
             var builder = new DbContextOptionsBuilder<HomeworksContext>();
-            DbContextOptions options = null;
-            if (type == ContextType.MEMORY) {
-                options = GetMemoryConfig(builder);
-            } else {
-                options = GetSqlConfig(builder);
-            }
-            return new HomeworksContext(options);
+            return new HomeworksContext(GetMemoryConfig(builder, nameBd));
         }
 
-        private static DbContextOptions GetMemoryConfig(DbContextOptionsBuilder builder) {
-            builder.UseInMemoryDatabase("HomeworksDB");
+        private static DbContextOptions GetMemoryConfig(DbContextOptionsBuilder builder, string nameBd) {
+            builder.UseInMemoryDatabase(nameBd);
             return builder.Options;
+        }
+
+        public static HomeworksContext GetSqlContext() { //BD EN SQL
+            var builder = new DbContextOptionsBuilder<HomeworksContext>();
+            return new HomeworksContext(GetSqlConfig(builder));
         }
 
         private static DbContextOptions GetSqlConfig(DbContextOptionsBuilder builder) {
