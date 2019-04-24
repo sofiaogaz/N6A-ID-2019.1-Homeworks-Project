@@ -328,3 +328,5 @@ Por ultimo, aca se puede ver como obtener la informacion que es enviada en el bo
 # Mas Info
 
 * El libro API Design EBook, que se encuentra en el curso de aulas.
+* [StartUp](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/startup?view=aspnetcore-2.1)
+* [Dependency Injection](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.1)
