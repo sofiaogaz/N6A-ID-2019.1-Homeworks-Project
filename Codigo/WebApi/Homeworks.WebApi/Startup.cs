@@ -31,12 +31,12 @@ namespace Homeworks.WebApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            /*services.AddDbContext<DbContext, HomeworksContext>(
-                o => o.UseSqlServer(Configuration.GetConnectionString("HomeworksDB"))
-            );*/
             services.AddDbContext<DbContext, HomeworksContext>(
-                o => o.UseInMemoryDatabase("HomeworksDB")
+                o => o.UseSqlServer(Configuration.GetConnectionString("HomeworksDB"))
             );
+            /* services.AddDbContext<DbContext, HomeworksContext>(
+                o => o.UseInMemoryDatabase("HomeworksDB")
+            ); */
             services.AddScoped<ILogic<Homework>, HomeworkLogic>();
             services.AddScoped<IRepository<Homework>, HomeworkRepository>();
             services.AddScoped<ISessionLogic, SessionLogic>();
