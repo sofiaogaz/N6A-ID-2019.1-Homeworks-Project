@@ -4,13 +4,15 @@
 
 * [Clase 1 - .NET Core](/Clases/Clase%201%20-%20NET%20Core.md)
 * [Clase 1 - Comandos Básicos](/Clases/Clase%201%20-%20Creacion.md)
-* [Clase 2 - Aplicación Base](/Clases/Clase%202%20-%20Aplicacion.md)
+* [Clase 2 - Aplicación Base](/Clases/Clase%202%20-%20Aplicacion.md) / [Codigo WebApi](/Codigo/WebApi)
 * [Clase 2 - EF Core](/Clases/Clase%202%20-%20EntityFrameworkCore.md)
 * [Clase 3 - Inyección de Dependencias](/Clases/Clase%203%20-%20Inyeccion%20de%20Dependencias.md)
 * [Clase 3 - Mocking](/Clases/Clase%203%20-%20Mocking.md)
 * [Clase 4 - WebApi](/Clases/Clase%204%20-%20WebApi.md)
 * [Clase 5 - Postman](/Clases/Clase%205%20-%20Postman.pdf) / [Colección de Ejemplo](/Codigo/Postman)
 * [Clase 5 - Filters](/Clases/Clase%205%20-%20Filters.md)
+* [Clase 6 - Reflection](/Clases/Clase%206%20-%20Reflection.md) / [Reflection Ejemplo](/Codigo/Reflection)
+* [Clase 7 - Deployment en IIS](/Clases/Clase%207%20-%20Deployment%20en%20IIS.md)
 
 ## Excel GitHub
 
