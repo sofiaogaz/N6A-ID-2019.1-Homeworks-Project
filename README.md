@@ -12,6 +12,7 @@
 * [Clase 5 - Postman](/Clases/Clase%205%20-%20Postman.pdf) / [Colección de Ejemplo](/Codigo/Postman)
 * [Clase 5 - Filters](/Clases/Clase%205%20-%20Filters.md)
 * [Clase 6 - Reflection](/Clases/Clase%206%20-%20Reflection.md) / [Reflection Ejemplo](/Codigo/Reflection)
+* [Clase 7 - Custom Data Binding (Extra)](/Clases/Clase%207%20-%20Custom%20Data%20Binding.md)
 * [Clase 7 - Deployment en IIS](/Clases/Clase%207%20-%20Deployment%20en%20IIS.md)
 
 ## Excel GitHub

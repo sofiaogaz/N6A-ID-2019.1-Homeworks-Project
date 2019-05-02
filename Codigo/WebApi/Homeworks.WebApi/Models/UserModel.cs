@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Homeworks.Domain;
+using Homeworks.WebApi.Parsers;
+using Newtonsoft.Json;
 
 namespace Homeworks.WebApi.Models
 {
+    [JsonConverter(typeof(UserModelJsonConverter))]
     public class UserModel : Model<User, UserModel>
     {
         public Guid Id { get; set; }

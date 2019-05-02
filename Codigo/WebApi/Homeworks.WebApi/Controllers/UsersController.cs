@@ -43,5 +43,21 @@ namespace Homeworks.WebApi.Controllers
             }
         }
 
+        [HttpPost("Type")]
+        public IActionResult GetUserType([FromBody]UserModel model)
+        {
+            if (model == null) 
+            {
+                return BadRequest("The user is null");
+            }
+            if (model is TeacherModel) {
+                return Ok(new object[] { "TeacherModel", model});
+            }
+            if (model is StudentModel) {
+                return Ok(new object[] { "StudentModel", model});
+            }
+            return Ok(new object[] { "UserModel", model});
+        }
+
     }
 }
