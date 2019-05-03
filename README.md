@@ -15,6 +15,10 @@
 * [Clase 7 - Custom Data Binding (Extra)](/Clases/Clase%207%20-%20Custom%20Data%20Binding.md)
 * [Clase 7 - Deployment en IIS](/Clases/Clase%207%20-%20Deployment%20en%20IIS.md)
 
+## 2) Angular
+
+* [Clase 8 - Angular y las SPAs](/Clases/Clase%208%20-%20Angular%20y%20las%20SPAs.md)
+
 ## Excel GitHub
 
 * [Cuentas GitHub](https://1drv.ms/x/s!AsRv3us8uF1Rg5VSbE_Kpu_NsEw1Dg)
