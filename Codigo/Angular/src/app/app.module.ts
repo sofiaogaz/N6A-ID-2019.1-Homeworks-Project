@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeworksListComponent } from './homeworks-list/homeworks-list.component';
 import { HomeworksFilterPipe } from './homeworks-list/homeworks-filter.pipe';
-//import { HomeworksService } from './services/homeworks.service';
+import { HomeworksService } from './services/homeworks.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { HomeworksFilterPipe } from './homeworks-list/homeworks-filter.pipe';
     BrowserModule
   ],
   providers: [
-    //HomeworksService
+    HomeworksService
   ],
   bootstrap: [AppComponent]
 })
