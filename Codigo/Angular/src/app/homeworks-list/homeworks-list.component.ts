@@ -9,7 +9,8 @@ import { Exercise } from '../models/Exercise';
 })
 export class HomeworksListComponent implements OnInit {
     pageTitle:string = "Homeworks List";
-    listFilter: string;
+    listFilter:string = "";
+    showExercises:boolean = false;
     homeworks:Array<Homework> = [
         new Homework("1", "Una tarea", 0, new Date(), [new Exercise("1", "Un Problema", 0)]),
         new Homework("2", "Otra tarea", 0, new Date(), [])
@@ -19,4 +20,9 @@ export class HomeworksListComponent implements OnInit {
 
     ngOnInit() {
     }
+
+    toogleExercises() {
+        this.showExercises = !this.showExercises;
+    }
+
 }

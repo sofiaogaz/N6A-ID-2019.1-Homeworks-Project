@@ -27,17 +27,17 @@
                 <!--Cabezal de la tabla -->
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Description</th>
-                        <th>DueDate</th>
-                        <th>Score</th>
-                        <th>
-                            <button class='btn btn-primary'>
-                               Show Exercises
-                            </button>
-                        </th>
+                      <th>Id</th>
+                      <th>Descripcion</th>
+                      <th>Fecha</th>
+                      <th>Puntaje</th>
+                      <th>
+                        <button (click)="toogleExercises()" class='btn btn-primary'>
+                          {{showExercises ? 'Mostrar' : 'Ocultar'}} EJs
+                        </button>
+                      </th>
                     </tr>
-                </thead>
+                  </thead>
                 <!--Cuerpo de la tabla-->
                 <tbody>
                     <tr *ngFor='let aHomework of homeworks'>
@@ -46,22 +46,22 @@
                         <td>{{aHomework.dueDate}}</td>
                         <td>{{aHomework.score}}</td>
                         <td>
-                            <div>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Problem</th>
-                                            <th>Score</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor='let aExercise of aHomework.exercises'>
-                                            <td>{{aExercise.problem}}</td>
-                                            <td>{{aExercise.score}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                          <div *ngIf='showExercises'>
+                            <table *ngIf='aHomework.exercises && aHomework.exercises.length'>
+                              <thead>
+                                <tr>
+                                  <th>Problema</th>
+                                  <th>Puntaje</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let aExercise of aHomework.exercises">
+                                  <td>{{aExercise.problem}}</td>
+                                  <td>{{aExercise.score}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </td>
                     </tr>
                   </tbody>
