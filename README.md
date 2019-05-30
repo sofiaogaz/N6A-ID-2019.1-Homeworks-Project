@@ -18,6 +18,8 @@
 ## 2) Angular
 
 * [Clase 8 - Angular y las SPAs](/Clases/Clase%208%20-%20Angular%20y%20las%20SPAs.md)
+* [Clase 9 - Componentes, Templates, Bootstrapping, Directivas, Data Binding y Pipes](/Clases/Clase%209%20-%20Componentes%20Templates,%20Bootstrapping,%20Directivas%20Data%20Binding%20y%20Pipes.md)
+* [Clase 9 - Custom Pipes y Service Básico](Clase%209%20-%20Custom%20Pipes%20y%20Service%20Basico.md)
 
 ## Excel GitHub
 
