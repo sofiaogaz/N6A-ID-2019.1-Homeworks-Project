@@ -1,20 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeworksListComponent } from './homeworks-list/homeworks-list.component';
+import { HomeworksFilterPipe } from './homeworks-list/homeworks-filter.pipe';
+//import { HomeworksService } from './services/homeworks.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeworksListComponent
+    HomeworksListComponent,
+    HomeworksFilterPipe
   ],
   imports: [
-    BrowserModule,
-    FormsModule
+    FormsModule,
+    BrowserModule
   ],
-  providers: [],
+  providers: [
+    //HomeworksService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

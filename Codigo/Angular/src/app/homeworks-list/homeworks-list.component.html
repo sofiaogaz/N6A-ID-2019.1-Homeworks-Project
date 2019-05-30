@@ -40,7 +40,7 @@
                   </thead>
                 <!--Cuerpo de la tabla-->
                 <tbody>
-                    <tr *ngFor='let aHomework of homeworks'>
+                    <tr *ngFor="let aHomework of homeworks | homeworksFilter : listFilter">
                         <td>{{aHomework.id}}</td>
                         <td>{{aHomework.description  | uppercase}}</td>
                         <td>{{aHomework.dueDate}}</td>
