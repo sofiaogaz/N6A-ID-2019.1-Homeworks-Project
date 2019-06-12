@@ -31,7 +31,7 @@
 
 ## Excel GitHub
 
-* [Cuentas GitHub](https://1drv.ms/x/s!AsRv3us8uF1Rg5VSbE_Kpu_NsEw1Dg)
+* [Cuentas GitHub](https://1drv.ms/x/s!AsRv3us8uF1Rg5VSw33izst2C9dCdg?e=y4Tl7F)
 
 ## Aclaración
 
