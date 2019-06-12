@@ -4,7 +4,7 @@
 
 * [Clase 1 - .NET Core](/Clases/Clase%201%20-%20NET%20Core.md)
 * [Clase 1 - Comandos Básicos](/Clases/Clase%201%20-%20Creacion.md)
-* [Clase 2 - Aplicación Base](/Clases/Clase%202%20-%20Aplicacion.md) / [Codigo WebApi](/Codigo/WebApi)
+* [Clase 2 - Aplicación Base](/Clases/Clase%202%20-%20Aplicacion.md) / [Código WebApi](/Codigo/WebApi)
 * [Clase 2 - EF Core](/Clases/Clase%202%20-%20EntityFrameworkCore.md)
 * [Clase 3 - Inyección de Dependencias](/Clases/Clase%203%20-%20Inyeccion%20de%20Dependencias.md)
 * [Clase 3 - Mocking](/Clases/Clase%203%20-%20Mocking.md)
@@ -22,6 +22,7 @@
 * [Clase 9 - Custom Pipes y Service Básico](/Clases/Clase%209%20-%20Custom%20Pipes%20y%20Service%20Basico.md)
 * [Clase 10 - Conceptos avanzados](/Clases/Clase%2010%20-%20Conceptos%20avanzados.md)
 * [Clase 10 - Http, Observables y Mas sobre Routing](/Clases/Clase%2010%20-%20Http%20y%20Observables%20y%20Mas%20sobre%20Routing.md)
+* [Clase 11 - CORS y Deployment de Angular en IIS](/Clases/Clase%2011%20-%20Deployment%20de%20Angular%20en%20IIS.md)
 
 ## Excel GitHub
 
